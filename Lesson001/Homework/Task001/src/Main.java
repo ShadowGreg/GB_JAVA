@@ -9,35 +9,35 @@ import java.util.Collections;
 public class Main {
     public static void main(String[] args) {
         ArrayList<Integer> newArrayList;
-        newArrayList = GenerateRandomArray(0, 300);
-        PrintArray(newArrayList);
+        newArrayList = generateRandomArray(0, 300);
+        printArray(newArrayList);
         System.out.println("Максимум > " + Collections.max(newArrayList));
         System.out.println("Минимум > " + Collections.min(newArrayList));
         System.out.println("Среднее > " + (Collections.max(newArrayList) + Collections.min(newArrayList)) / 2);
-        System.out.println("Элемент в середине > " + FindMiddle(newArrayList));
+        System.out.println("Элемент в середине > " + findMiddle(newArrayList));
 
     }
 
-    private static void PrintArray(ArrayList<Integer> newArrayList) {
+    private static void printArray(ArrayList<Integer> newArrayList) {
         newArrayList.forEach(s -> System.out.print(s + " , "));
         System.out.println();
     }
 
-    private static Integer FindMiddle(ArrayList<Integer> newArrayList) {
+    private static Integer findMiddle(ArrayList<Integer> newArrayList) {
         int middle = newArrayList.size() / 2;
         return newArrayList.get(middle);
     }
 
-    private static ArrayList<Integer> GenerateRandomArray(Integer min, Integer max) {
+    private static ArrayList<Integer> generateRandomArray(Integer min, Integer max) {
         ArrayList<Integer> output = new ArrayList<Integer>();
 
-        for (int i = 0; i < GetRandomNum(min, max); i++) {
-            output.add(GetRandomNum(min, max));
+        for (int i = 0; i < getRandomNum(min, max); i++) {
+            output.add(getRandomNum(min, max));
         }
         return output;
     }
 
-    private static Integer GetRandomNum(Integer min, Integer max) {
+    private static Integer getRandomNum(Integer min, Integer max) {
         int range = Math.abs(max - min) + 1;
         return ((int) (Math.random() * range) + (min <= max ? min : max));
     }

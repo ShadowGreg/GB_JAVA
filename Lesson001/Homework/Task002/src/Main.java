@@ -6,15 +6,15 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> arrayList = GenerateRandomArray(0, 300);
+        ArrayList<Integer> arrayList = generateRandomArray(0, 300);
         System.out.println("Сгенерированный масиив:");
-        PrintArray(arrayList);
+        printArray(arrayList);
         System.out.println("Сортированный массив:");
-        PrintArray(SortBubbleMethod(arrayList));
+        printArray(sortBubbleMethod(arrayList));
 
     }
 
-    private static ArrayList<Integer> SortBubbleMethod(ArrayList<Integer> arrayList) {
+    private static ArrayList<Integer> sortBubbleMethod(ArrayList<Integer> arrayList) {
         ArrayList<Integer> sortedArray = new ArrayList<>(arrayList);
         for (int i = 0; i < sortedArray.size() - 1; i++) {
             for (int j = 0; j < sortedArray.size() - i - 1; j++) {
@@ -28,21 +28,21 @@ public class Main {
         return sortedArray;
     }
 
-    private static ArrayList<Integer> GenerateRandomArray(Integer min, Integer max) {
+    private static ArrayList<Integer> generateRandomArray(Integer min, Integer max) {
         ArrayList<Integer> output = new ArrayList<Integer>();
 
-        for (int i = 0; i < GetRandomNum(min, max); i++) {
-            output.add(GetRandomNum(min, max));
+        for (int i = 0; i < getRandomNum(min, max); i++) {
+            output.add(getRandomNum(min, max));
         }
         return output;
     }
 
-    private static Integer GetRandomNum(Integer min, Integer max) {
+    private static Integer getRandomNum(Integer min, Integer max) {
         int range = Math.abs(max - min) + 1;
         return ((int) (Math.random() * range) + (min <= max ? min : max));
     }
 
-    private static void PrintArray(ArrayList<Integer> newArrayList) {
+    private static void printArray(ArrayList<Integer> newArrayList) {
         newArrayList.forEach(s -> System.out.print(s + " , "));
         System.out.println();
     }

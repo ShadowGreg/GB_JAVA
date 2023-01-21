@@ -7,18 +7,18 @@ public class Main {
     public static void main(String[] args) {
         int[] array = IntStream.range(2,200).toArray();
 
-        PrintSimpleNumbers(array);
+        printSimpleNumbers(array);
     }
 
-    private static void PrintSimpleNumbers(int[] array) {
+    private static void printSimpleNumbers(int[] array) {
         for (int i = 0; i < array.length; i++) {
-            if (IsPrime(array[i])){
+            if (isPrime(array[i])){
                 System.out.print(array[i] + ", ");
             }
         }
     }
 
-    private static boolean IsPrime(int number) {
+    private static boolean isPrime(int number) {
         return number > 1
                 && IntStream.rangeClosed(2, (int) Math.sqrt(number))
                 .noneMatch(n -> (number % n == 0));
