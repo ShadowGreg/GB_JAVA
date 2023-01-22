@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-public class BubbleMethod extends RandomNum {
-    protected static ArrayList<Integer> sortBubbleMethod(ArrayList<Integer> arrayList) {
+public class BubbleMethod {
+    protected static ArrayList<Integer> SortBubbleMethod(ArrayList<Integer> arrayList) {
         ArrayList<Integer> sortedArray = new ArrayList<>(arrayList);
         for (int i = 0; i < sortedArray.size() - 1; i++) {
             for (int j = 0; j < sortedArray.size() - i - 1; j++) {

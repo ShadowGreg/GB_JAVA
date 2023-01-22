@@ -4,13 +4,13 @@ import java.util.ArrayList;
 //        Реализуйте алгоритм сортировки пузырьком для сортировки массива
 
 
-public class Main extends RandomArray.Main {
+public class Main {
     public static void main(String[] args) {
-        ArrayList<Integer> arrayList = generateRandomArray(0, 300);
+        ArrayList<Integer> arrayList = RandomNum.GenerateRandomArray(0, 300);
         System.out.println("Сгенерированный масиив:");
-        Service.printArray(arrayList);
+        Service.PrintArray(arrayList);
         System.out.println("Сортированный массив:");
-        Service.printArray(BubbleMethod.sortBubbleMethod(arrayList));
+        Service.PrintArray(BubbleMethod.SortBubbleMethod(arrayList));
 
     }
 
