@@ -15,10 +15,10 @@ public class Main {
         SimpleFormatter sFormat = new SimpleFormatter();
         fh.setFormatter(sFormat);
 
-        WriteToFile("./Task001/result.txt", String.valueOf(EnterNumber(logger)), logger);
+        writeToFile("./Task001/result.txt", String.valueOf(enterNumber(logger)), logger);
     }
 
-    private static void WriteToFile(String fileName, String enterNumber, Logger logger) {
+    private static void writeToFile(String fileName, String enterNumber, Logger logger) {
         try {
             File file = new File(fileName);
             if (file.createNewFile()) {
@@ -38,7 +38,7 @@ public class Main {
     }
 
 
-    private static Byte EnterNumber(Logger logger) {
+    private static Byte enterNumber(Logger logger) {
         byte numToByte = 0;
         try {
             Scanner scanner = new Scanner(System.in);
