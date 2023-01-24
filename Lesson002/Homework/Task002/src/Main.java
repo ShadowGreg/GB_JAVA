@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.logging.FileHandler;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
@@ -58,7 +57,7 @@ public class Main {
             SimpleFormatter sFormat = new SimpleFormatter();
             fh.setFormatter(sFormat);
             String textToLogger = readText(localFilename);
-            logger.log(Level.INFO, textToLogger);
+            logger.info(textToLogger);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -91,6 +90,7 @@ public class Main {
     public static boolean removeFromLocale(String fileName) {
         try {
             Files.delete(Path.of(fileName));
+            return true;
         } catch (NoSuchFileException x) {
             System.err.format("%s: no such" + " file or directory%n", fileName);
         } catch (DirectoryNotEmptyException x) {
