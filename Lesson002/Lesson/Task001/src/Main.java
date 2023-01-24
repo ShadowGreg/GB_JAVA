@@ -29,18 +29,22 @@ public class Main {
         return outputResult;
     }
 
-    public static Map<Character, Integer> findJewelsInStonesDic(String jewels, String stones) {
+    public static String findJewelsInStonesDic(String jewels, String stones) {
         long startTime = System.nanoTime();
-        Map<Character, Integer> outputResult = new HashMap<>();
+        Map<Character, Integer> outputMap = new HashMap<>();
+        String outputResult = "";
         for (int i = 0; i < jewels.length(); i++) {
-            outputResult.put(jewels.charAt(i), 0);
+            outputMap.put(jewels.charAt(i), 0);
         }
 
         for (int i = 0; i < stones.length(); i++) {
-            if (outputResult.containsKey(stones.charAt(i))) {
-                int temp = outputResult.get(stones.charAt(i));
-                outputResult.put(stones.charAt(i), ++temp);
+            if (outputMap.containsKey(stones.charAt(i))) {
+                int temp = outputMap.get(stones.charAt(i));
+                outputMap.put(stones.charAt(i), ++temp);
             }
+        }
+        for (var entry : outputMap.entrySet()) {
+            outputResult = new StringBuilder(outputResult + entry.getKey() + entry.getValue()).toString();
         }
 
         long endTime = System.nanoTime();
