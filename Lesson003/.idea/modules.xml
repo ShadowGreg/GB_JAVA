@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FindPivotIndex/FindPivotIndex.iml" filepath="$PROJECT_DIR$/FindPivotIndex/FindPivotIndex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IsSubsequence/IsSubsequence.iml" filepath="$PROJECT_DIR$/IsSubsequence/IsSubsequence.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson003.iml" filepath="$PROJECT_DIR$/Lesson003.iml" />
       <module fileurl="file://$PROJECT_DIR$/RunningSum/RunningSum.iml" filepath="$PROJECT_DIR$/RunningSum/RunningSum.iml" />
     </modules>
