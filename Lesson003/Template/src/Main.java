@@ -1,11 +1,11 @@
 public class Main {
     public static void main(String[] args) {
         System.out.println("Рисуем флаг России:");
-        RussianFlag russianFlag = new RussianFlag();
+        AbstractThreeRowsFlag russianFlag = new RussianFlag();
         russianFlag.drawFlag();
 
         System.out.println("\nРисуем флаг Нидерландов:");
-        NetherlandsFlag netherlandsFlag = new NetherlandsFlag();
+        AbstractThreeRowsFlag netherlandsFlag = new NetherlandsFlag();
         netherlandsFlag.drawFlag();
     }
 }
@@ -21,27 +21,54 @@ class Colors {
     }
 }
 
-class RussianFlag {
+class RussianFlag extends AbstractThreeRowsFlag {
 
-    void drawFlag() {
-        drawFlagpole();
+    @Override
+    void drawUpperLevel() {
         Colors.paintWhiteColor();
-        Colors.paintBlueColor();
-        Colors.paintRedColor();
     }
 
-    private void drawFlagpole() {
-        System.out.println("Флагшток нарисован");
+    @Override
+    void drawMiddleLevel() {
+        Colors.paintBlueColor();
+    }
+
+    @Override
+    void drawBottomLevel() {
+        Colors.paintRedColor();
     }
 }
 
-class NetherlandsFlag {
+class NetherlandsFlag extends AbstractThreeRowsFlag {
 
-    void drawFlag() {
-        drawFlagpole();
+    @Override
+    void drawUpperLevel() {
         Colors.paintRedColor();
+    }
+
+    @Override
+    void drawMiddleLevel() {
         Colors.paintWhiteColor();
+    }
+
+    @Override
+    void drawBottomLevel() {
         Colors.paintBlueColor();
+    }
+}
+
+
+abstract class AbstractThreeRowsFlag {
+
+    abstract void drawUpperLevel();
+    abstract void drawMiddleLevel();
+    abstract void drawBottomLevel();
+
+    final void drawFlag() {
+        drawFlagpole();
+        drawUpperLevel();
+        drawMiddleLevel();
+        drawBottomLevel();
     }
 
     private void drawFlagpole() {
