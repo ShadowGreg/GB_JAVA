@@ -1,5 +1,7 @@
+
 public class Main {
     public static void main(String[] args) {
+
         System.out.println("Рисуем флаг России:");
         AbstractThreeRowsFlag russianFlag = new RussianFlag();
         russianFlag.drawFlag();
@@ -18,6 +20,23 @@ class Colors {
     }
     static void paintRedColor(){
         System.out.println(ConsoleColors.RED_BACKGROUND + "ПОЛОСА\tКРАСНОГО\tЦВЕТА" + ConsoleColors.RESET);
+    }
+}
+abstract class AbstractThreeRowsFlag {
+
+    abstract void drawUpperLevel();
+    abstract void drawMiddleLevel();
+    abstract void drawBottomLevel();
+
+    final void drawFlag() {
+        drawFlagpole();
+        drawUpperLevel();
+        drawMiddleLevel();
+        drawBottomLevel();
+    }
+
+    private void drawFlagpole() {
+        System.out.println("Флагшток нарисован");
     }
 }
 
@@ -58,20 +77,3 @@ class NetherlandsFlag extends AbstractThreeRowsFlag {
 }
 
 
-abstract class AbstractThreeRowsFlag {
-
-    abstract void drawUpperLevel();
-    abstract void drawMiddleLevel();
-    abstract void drawBottomLevel();
-
-    final void drawFlag() {
-        drawFlagpole();
-        drawUpperLevel();
-        drawMiddleLevel();
-        drawBottomLevel();
-    }
-
-    private void drawFlagpole() {
-        System.out.println("Флагшток нарисован");
-    }
-}
