@@ -15,15 +15,27 @@ public class Task001 {
 
     }
 
+    interface myInterface {
+        Object run();
+    }
+
+    private static Object findExecuteTime(myInterface function) {
+        long start = System.currentTimeMillis();
+        var outputCollection = function.run();
+        long end = System.currentTimeMillis();
+        System.out.println("Время выполнения > " + (end - start) + "ms");
+        return outputCollection;
+    }
+
     private static myInterface deleteHalfElement(Object inputCollection) {
         myInterface myInterfaceArray = new myInterface() {
             public Object run() {
                 if (inputCollection instanceof ArrayList<?>) {
                     System.out.println("Время удаления половины массива: ");
-                    ((ArrayList< ? > ) inputCollection).remove(((ArrayList< ? > ) inputCollection).size() / 2);
+                    ((ArrayList<?>) inputCollection).remove(((ArrayList<?>) inputCollection).size() / 2);
                 } else if (inputCollection instanceof LinkedList<?>) {
                     System.out.println("Время удаления половины линкедлиста: ");
-                    ((LinkedList< ? > ) inputCollection).remove(((LinkedList< ? > ) inputCollection).size() / 2);
+                    ((LinkedList<?>) inputCollection).remove(((LinkedList<?>) inputCollection).size() / 2);
                 }
                 return inputCollection;
             }
@@ -48,19 +60,8 @@ public class Task001 {
         return myInterfaceArray;
     }
 
-    private static Object findExecuteTime(myInterface function) {
-        long start = System.currentTimeMillis();
-        var outputCollection = function.run();
-        long end = System.currentTimeMillis();
-        System.out.println("Время выполнения > " + (end - start) + "ms");
-        return outputCollection;
-    }
 
-    interface myInterface {
-        Object run();
-    }
-
-    public static myInterface createRandomLinkedList(int entity) {
+    private static myInterface createRandomLinkedList(int entity) {
         myInterface myInterfaceArray = new myInterface() {
 
             public Object run() {
