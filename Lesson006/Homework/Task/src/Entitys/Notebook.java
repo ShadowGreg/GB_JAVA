@@ -15,6 +15,20 @@ public class Notebook implements Computer {
         this.price = price;
     }
 
+    public Notebook(String inputComputer) {
+        String[] splitParams = inputComputer.split(" ");
+        int RAM = 1;
+        int HD = 4;
+        int OS = 7;
+        int color = 9;
+        int price = 11;
+        this.RAM = Integer.parseInt(splitParams[RAM]);
+        this.HD = Integer.parseInt(splitParams[HD]);
+        this.OS = splitParams[OS];
+        this.color = splitParams[color];
+        this.price = Integer.parseInt(splitParams[price]);
+    }
+
     @Override
     public void setPrise(Integer inputPrice) {
         this.price = inputPrice;
@@ -27,7 +41,7 @@ public class Notebook implements Computer {
 
     @Override
     public String getComputer() {
-        return String.format("ОЗУ: %d Мб, ЖД: %d Гб, ОС: %s Цвет: %s Цена: %d р.\n" , RAM, HD, OS, color, price);
+        return String.format("ОЗУ: %d Мб, ЖД: %d Гб, ОС: %s Цвет: %s Цена: %d р.\n", RAM, HD, OS, color, price);
     }
 
     @Override

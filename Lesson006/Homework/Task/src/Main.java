@@ -1,4 +1,5 @@
 import BusinessLogic.Filter;
+import BusinessLogic.SortingList;
 import Entitys.Store;
 
 import java.util.HashMap;
@@ -14,6 +15,8 @@ public class Main {
 
         var filteredTable = Filter.getFilteredComputersBy(sortStore, store.getComputersFromStore());
         System.out.println(filteredTable);
+
+        System.out.println(SortingList.sortByPrice(filteredTable));
 
 
     }
