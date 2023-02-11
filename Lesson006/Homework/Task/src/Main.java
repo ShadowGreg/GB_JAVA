@@ -11,7 +11,7 @@ public class Main {
 
         Map<String, String> sortStore = new HashMap<>();
         sortStore.put("Linux", "RED");
-        sortStore.put("Windows", "1000");
+        sortStore.put("Linux", "Blue");
 
         var filteredTable = Filter.getFilteredComputersBy(sortStore, store.getComputersFromStore());
         System.out.println(filteredTable);
