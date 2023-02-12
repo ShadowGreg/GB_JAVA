@@ -39,4 +39,5 @@ public class Main {
         System.out.println(zoo.getFlightChampion());
 
     }
+    //https://www.plantuml.com/
 }
