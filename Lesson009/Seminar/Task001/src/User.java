@@ -3,13 +3,29 @@ public class User implements Comparable<User> {
     private String lastName;
     private int age;
 
+    public Personal getPersonal() {
+        return personal;
+    }
 
+    private Personal personal = new Personal(new User[]{});
 
+    private static Sorter sort;
+
+    public static void setSorter(Sorter sort) {
+        User.sort = sort;
+    }
 
     public User(String firstName, String lastName, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+    }
+
+    public User(String firstName, String lastName, int age, User[] personal) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.personal = new Personal(personal);
     }
 
 
@@ -24,36 +40,27 @@ public class User implements Comparable<User> {
 
     @Override
     public int compareTo(User o) {
-
-        int conditionFirstName = firstName.compareTo(o.firstName);
-        if (conditionFirstName != 0) {
-            return conditionFirstName;
-        }
-
-        int conditionLastName = lastName.compareTo(o.lastName);
-        if (conditionLastName != 0) {
-            return conditionLastName;
-        }
-        return this.age - o.age;
+        return sort.compare(this, o);
     }
 
-    public abstract class Sorter{
+    public static abstract class Sorter {
         public abstract int compare(User u1, User u2);
     }
 
-    public class SorterFirstName extends Sorter{
+    public static class SorterFirstName extends Sorter {
 
         @Override
         public int compare(User u1, User u2) {
-                return u1.firstName.compareTo(u2.firstName);
+            return u1.firstName.compareTo(u2.firstName);
 
         }
     }
-    public class SorterLastName extends Sorter{
+
+    public static class SorterLastName extends Sorter {
 
         @Override
         public int compare(User u1, User u2) {
-                return u1.lastName.compareTo(u2.lastName);
+            return u1.lastName.compareTo(u2.lastName);
 
         }
     }
