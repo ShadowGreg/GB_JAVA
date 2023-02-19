@@ -10,8 +10,8 @@ public class Shield extends Armour {
 
     @Override
     public String toString() {
-        return " Shield{ " +
-                "Protection=" + Protected() +
-                '}';
+        return " Shield{ "
+                + "Protection=" + Protected()
+                + '}';
     }
 }

@@ -13,19 +13,20 @@ import weapons.Sword;
 import java.util.Random;
 
 public class GameController {
-    private Random rnd = new Random();
-    private int maxUnitsCount = 100;
+    private final Random rnd = new Random();
+    private final int maxUnitsCount = 100;
 
-    Team<Warrior> firstLegion;
-    Team<Warrior> secondLegion;
+    private final Team<Warrior> firstLegion;
+    private final Team<Warrior> secondLegion;
 
     public GameController() {
         firstLegion = generateTeam("First Legion");
         secondLegion = generateTeam("Second Legion");
-        Battle<Team, Team> battleOfPydna = new Battle(firstLegion, secondLegion);
+        Battle<Team, Team> battleOfPydna
+                = new Battle(firstLegion, secondLegion);
     }
 
-    private Team<Warrior> generateTeam(String name) {
+    private Team<Warrior> generateTeam(final String name) {
         Team<Warrior> preparedTeam = new Team<>(name);
         for (int i = 0; i < rnd.nextInt(maxUnitsCount); i++) {
             preparedTeam.addWarrior(generateWarrior());
@@ -34,25 +35,27 @@ public class GameController {
     }
 
     private Warrior generateWarrior() {
-        int randType = rnd.nextInt(1);
+        int randType = rnd.nextInt(2);
         return getNewWarriorItem(randType, new Names().getName());
     }
 
-    private Warrior getNewWarriorItem(int randType, String name) {
-        switch (randType) {
-            case 0:
-                return new Archer(name, new Bow()).addArmour(getArmor(rnd.nextInt(1)));
-            default:
-                return new SwordMan(name, new Sword()).addArmour(getArmor(rnd.nextInt(1)));
+    private Warrior getNewWarriorItem(final int randType, final String name) {
+        if (randType == 1) {
+            return new Archer(
+                    name,
+                    new Bow()).addArmour(getArmor(rnd.nextInt(1))
+            );
         }
+        return new SwordMan(
+                name,
+                new Sword()).addArmour(getArmor(rnd.nextInt(1))
+        );
     }
 
-    private Armour getArmor(int armIndex) {
-        switch (armIndex){
-            case 0:
-                return new Shield();
-            default:
-                return new ChainMail();
+    private Armour getArmor(final int armIndex) {
+        if (armIndex == 1) {
+            return new Shield();
         }
+        return new ChainMail();
     }
 }

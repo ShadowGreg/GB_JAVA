@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.Random;
 
 public class Team<T extends Warrior> {
-    private Random rnd = new Random();
-    private List<T> team = new ArrayList<>();
+    private final Random rnd = new Random();
+    private final List<T> team = new ArrayList<>();
 
 
-    private String name;
+    private final String name;
+    private final int gaveUpNum = 110;
 
     public Team(String name) {
         this.name = name;
@@ -64,7 +65,7 @@ public class Team<T extends Warrior> {
     public boolean isTeamGaveUp() {
         int sum = 0;
         for (Warrior item : team) sum += item.getHealthPoint();
-        if (sum > 110)
+        if (sum > gaveUpNum)
             return true;
         return false;
     }
@@ -75,6 +76,12 @@ public class Team<T extends Warrior> {
         for (T item : team) {
             teamBuilder.append(item.toString() + "\n");
         }
-        return String.format("Team{ team= %s, maxDistance = %d, maxDamage = %d \n%s}", name, getMaxDistance(), getTeamDamage(), teamBuilder);
+        return String.format(
+                "Team{ team= %s, maxDistance = %d, maxDamage = %d \n%s}",
+                name,
+                getMaxDistance(),
+                getTeamDamage(),
+                teamBuilder
+        );
     }
 }

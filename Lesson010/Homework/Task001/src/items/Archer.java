@@ -8,8 +8,9 @@ public class Archer extends Warrior<Bow, Armour> implements DistanceAttacker {
 
     public Archer(String name, Bow weapon) {
         super(name, weapon);
+        int delta = 10;
 
-        distance = weapon.getDistance() + rnd.nextInt(10);
+        distance = weapon.getDistance() + rnd.nextInt(delta);
     }
 
     public int getDistance() {
@@ -18,8 +19,8 @@ public class Archer extends Warrior<Bow, Armour> implements DistanceAttacker {
 
     @Override
     public String toString() {
-        return super.toString() + " Type = Archer{" +
-                "distance=" + distance +
-                '}';
+        return super.toString() + " Type = Archer{"
+                + "distance=" + distance
+                + '}';
     }
 }
