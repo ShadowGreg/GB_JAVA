@@ -1,5 +1,8 @@
 package controller;
 
+import armour.Armour;
+import armour.items.ChainMail;
+import armour.items.Shield;
 import items.Archer;
 import items.SwordMan;
 import items.Warrior;
@@ -38,9 +41,18 @@ public class GameController {
     private Warrior getNewWarriorItem(int randType, String name) {
         switch (randType) {
             case 0:
-                return new Archer(name, new Bow());
+                return new Archer(name, new Bow()).addArmour(getArmor(rnd.nextInt(1)));
             default:
-                return new SwordMan(name, new Sword());
+                return new SwordMan(name, new Sword()).addArmour(getArmor(rnd.nextInt(1)));
+        }
+    }
+
+    private Armour getArmor(int armIndex) {
+        switch (armIndex){
+            case 0:
+                return new Shield();
+            default:
+                return new ChainMail();
         }
     }
 }

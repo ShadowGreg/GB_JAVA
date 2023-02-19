@@ -5,7 +5,6 @@ import armour.items.Helmet;
 import weapons.Weapon;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -40,8 +39,9 @@ public abstract class Warrior<T1 extends Weapon, T2 extends Armour> {
         return damage;
     }
 
-    public void addArmour(T2 arm){
+    public Warrior addArmour(T2 arm){
         armours.add(arm);
+        return this;
     }
 
     public int getMaxDamage() {
