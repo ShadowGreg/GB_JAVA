@@ -67,6 +67,8 @@ public class Team<T extends Warrior> {
         for (Warrior item : team) sum += item.getHealthPoint();
         if (sum > gaveUpNum)
             return true;
+        if (team.size() == 0)
+            return true;
         return false;
     }
 
