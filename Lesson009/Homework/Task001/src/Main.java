@@ -1,3 +1,4 @@
+import myList.MyLinkedList;
 import myList.MyList;
 
 public class Main {
@@ -25,5 +26,23 @@ public class Main {
 
         System.out.println(myList.getHead());
         System.out.println(myList.getTail());
+        System.out.println();
+
+        MyLinkedList<String> linkedList = new MyLinkedList<>();
+
+        for (int i = 0; i < maxNumber; i++) {
+            linkedList.add(String.format("Hi %d people!", i));
+        }
+
+        for (String item : linkedList) {
+            System.out.println(item);
+        }
+
+        boolean temp = linkedList.iterator().hasPrevious();
+
+        while (linkedList.iterator().hasPrevious()){
+            System.out.println(linkedList.iterator().previous());
+        }
+
     }
 }
