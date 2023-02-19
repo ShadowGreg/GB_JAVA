@@ -5,13 +5,21 @@ import items.Warrior;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Team<T extends Warrior> {
+    private Random rnd = new Random();
     private List<T> team = new ArrayList<>();
+
+
     private String name;
 
     public Team(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public Team<T> addWarrior(T warrior) {
@@ -39,6 +47,26 @@ public class Team<T extends Warrior> {
             sum += item.getMaxDamage();
         }
         return sum;
+    }
+
+    public Warrior getRandomWarrior() {
+        return team.get(rnd.nextInt(team.size()));
+    }
+
+    public void checkingTeamStatus() {
+        for (int i = 0; i < team.size(); i++) {
+            if (0 >= team.get(i).getHealthPoint()) {
+                team.remove(i);
+            }
+        }
+    }
+
+    public boolean isTeamGaveUp() {
+        int sum = 0;
+        for (Warrior item : team) sum += item.getHealthPoint();
+        if (sum > 110)
+            return true;
+        return false;
     }
 
     @Override

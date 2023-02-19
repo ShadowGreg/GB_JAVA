@@ -1,8 +1,9 @@
 package items;
 
+import armour.Armour;
 import weapons.Bow;
 
-public class Archer extends Warrior<Bow> implements DistanceAttacker {
+public class Archer extends Warrior<Bow, Armour> implements DistanceAttacker {
     private int distance;
 
     public Archer(String name, Bow weapon) {

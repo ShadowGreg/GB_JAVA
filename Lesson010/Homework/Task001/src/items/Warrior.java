@@ -1,20 +1,28 @@
 package items;
 
+import armour.Armour;
+import armour.items.Helmet;
 import weapons.Weapon;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
-public abstract class Warrior<T extends Weapon> {
+public abstract class Warrior<T1 extends Weapon, T2 extends Armour> {
     private String name;
-    protected T weapon;
+    protected T1 weapon;
+    protected List<T2> armours;
     protected Random rnd = new Random();
     private int healthPoint;
 
 
-    public Warrior(String name, T weapon) {
+    public Warrior(String name, T1 weapon) {
         this.name = name;
         this.weapon = weapon;
         healthPoint = 100;
+        armours = new ArrayList<>();
+        armours.add((T2) new Helmet());
     }
 
     public int getHealthPoint() {
@@ -22,7 +30,8 @@ public abstract class Warrior<T extends Weapon> {
     }
 
     public void reduceHealthPoint(int damage) {
-        this.healthPoint -= damage;
+        int protectionSum = armours.stream().mapToInt(item -> item.Protected()).sum();
+        this.healthPoint -= damage - protectionSum;
     }
 
     public int hitDamage(Warrior enemy) {
@@ -31,16 +40,25 @@ public abstract class Warrior<T extends Weapon> {
         return damage;
     }
 
+    public void addArmour(T2 arm){
+        armours.add(arm);
+    }
+
     public int getMaxDamage() {
         return weapon.damage();
     }
 
     @Override
     public String toString() {
+        StringBuilder armoursDescription = new StringBuilder();
+        for (Armour item: armours) {
+            armoursDescription.append(item.toString());
+        }
         return "Warrior{" +
                 "name='" + name + '\'' +
                 ", weapon=" + weapon +
                 ", healthPoint=" + healthPoint +
+                ", Armours=" + armoursDescription +
                 '}';
     }
 }
