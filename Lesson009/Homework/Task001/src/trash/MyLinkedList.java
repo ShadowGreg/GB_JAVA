@@ -1,6 +1,4 @@
-package myList;
-
-import java.util.Iterator;
+package trash;
 
 public class MyLinkedList<T> implements Iterable<T> {
     private LinkedNode<T> head, tail;

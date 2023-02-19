@@ -1,6 +1,4 @@
-package myList;
-
-import java.util.Iterator;
+package trash;
 
 public class ListIterator<T> implements MyIterator<T> {
     LinkedNode<T> current;

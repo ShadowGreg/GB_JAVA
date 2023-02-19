@@ -1,4 +1,4 @@
-package myList;
+package trash;
 
 public class LinkedNode<T> {
     private LinkedNode<T> previous, next;
