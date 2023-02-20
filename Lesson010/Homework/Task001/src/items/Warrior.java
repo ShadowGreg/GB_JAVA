@@ -35,7 +35,7 @@ public abstract class Warrior<T1 extends Weapon, T2 extends Armour> {
 
     public int hitDamage(Warrior enemy) {
         int damage = 0;
-        if (healthPoint >= 0) {
+        if (healthPoint > 0) {
             damage = rnd.nextInt(weapon.damage());
             enemy.reduceHealthPoint(damage);
         }
