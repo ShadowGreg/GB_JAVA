@@ -34,12 +34,15 @@ public abstract class Warrior<T1 extends Weapon, T2 extends Armour> {
     }
 
     public int hitDamage(Warrior enemy) {
-        int damage = rnd.nextInt(weapon.damage());
-        enemy.reduceHealthPoint(damage);
+        int damage = 0;
+        if (healthPoint >= 0) {
+            damage = rnd.nextInt(weapon.damage());
+            enemy.reduceHealthPoint(damage);
+        }
         return damage;
     }
 
-    public Warrior addArmour(T2 arm){
+    public Warrior addArmour(T2 arm) {
         armours.add(arm);
         return this;
     }
@@ -51,7 +54,7 @@ public abstract class Warrior<T1 extends Weapon, T2 extends Armour> {
     @Override
     public String toString() {
         StringBuilder armoursDescription = new StringBuilder();
-        for (Armour item: armours) {
+        for (Armour item : armours) {
             armoursDescription.append(item.toString());
         }
         return "Warrior{" +
