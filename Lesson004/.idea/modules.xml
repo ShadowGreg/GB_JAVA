@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/Lesson004.iml" filepath="$PROJECT_DIR$/Lesson004.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SelfTask/SelfTask.iml" filepath="$PROJECT_DIR$/SelfTask/SelfTask.iml" />
-    </modules>
-  </component>
-</project>

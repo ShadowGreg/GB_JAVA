@@ -1,42 +1,41 @@
 import Device.VendingMachine;
 import Products.*;
 
-import java.util.Date;
-
 public class Main {
-    private static final int DATE_JDC_CONS_COUNT = 1900;
     public static void main(String[] args) {
-
+/**
+ * добавила воду питьевую,минеральную и бутерброды
+ * добавила параметр Volume для всех продуктов
+ * удалила дату срока хранения, т.к в моем автомате
+ * товар не залеживается
+ * и продала один бутерброд
+ */
         VendingMachine machine = new VendingMachine();
-        machine.addProduct(new Product("Lays", 100));
-        machine.addProduct(new Product("Mars", 70));
-        machine.addProduct(new Product("Twix", 70.99));
-        machine.addProduct(new Product("Алёнка", 90));
-        machine.addProduct(new Product("Колокольчик", 85));
-        machine.addProduct(new Perishable("Молоко Бурёнка", 85,
-                machine.getDateFormat().format(new Date((2023 - DATE_JDC_CONS_COUNT), 1, 28))));
-        machine.addProduct(new Perishable("Молоко Коровка", 85,
-                machine.getDateFormat().format(new Date((2023 - DATE_JDC_CONS_COUNT), 1, 28))));
-        machine.addProduct(new Perishable("Молоко Василёк", 85,
-                machine.getDateFormat().format(new Date((2023 - DATE_JDC_CONS_COUNT), 1, 28))));
-        machine.addProduct(new WeightProduct("Кофе молотый Жокей", 350,280));
-        machine.addProduct(new WeightProduct("Кофе молотый Egoist", 645,250));
-        machine.addProduct(new WeightProduct("Кофе молотый Bushido", 449,250));
-        machine.addProduct(new Gum("Жвачка Love Is", 449, Taste.banana));
-        machine.addProduct(new Gum("Жвачка Wrigley's Hubba Bubba Mega Long", 325, Taste.cola));
+        machine.addProduct(new Product("Lays", 100, 150));
+        machine.addProduct(new Product("Mars", 70, 60));
+        machine.addProduct(new Product("Twix", 72, 60));
+        machine.addProduct(new Product("Алёнка", 90, 90));
+        machine.addProduct(new Product("Колокольчик", 85, 1.5f));
+        machine.addProduct(new Perishable("Молоко Бурёнка", 85, 0.97f));
+        machine.addProduct(new Perishable("Молоко Коровка", 95, 1.0f));
+        machine.addProduct(new Perishable("Молоко Василёк", 50, 0.2f));
+        machine.addProduct(new Liquid("Вода минеральная Evian негазированная", 120, 0.5f));
+        machine.addProduct(new Liquid("Вода питьевая Святой Источник газированная", 50, 0.5f));
+        machine.addProduct(new Liquid("Вода питьевая Aqua Minerale Juicy Лимон", 80, 0.5f));
+        machine.addProduct(new Sandwich("Бутерброд с индейкой, сыром и помидором", 250, 200));
+        machine.addProduct(new Sandwich("Бутерброд с курицей и соусом терияки", 250, 200));
+        machine.addProduct(new Sandwich("Буррито с растительным фаршем", 180, 155));
 
         System.out.println(machine);
-        System.out.println("__________________________________");
+        System.out.println("----------------------------------------------------------------------");
         System.out.println(machine.findProduct("Молоко"));
         System.out.println(machine.findProduct("Алёнка"));
         System.out.println(machine.findProduct("Пиво"));
-        System.out.println("__________________________________");
+        System.out.println("----------------------------------------------------------------------");
         System.out.println("продан: " + machine.sellProduct(machine.findProduct("Twix").get(0)));
-        System.out.println("__________________________________");
-        System.out.println(machine);
-        System.out.println("__________________________________");
-        System.out.println("продан: " + machine.sellProduct(machine.findProduct("Bubba").get(0)));
-        System.out.println("__________________________________");
+        System.out.println("----------------------------------------------------------------------");
+        System.out.println("продан: " + machine.sellProduct(machine.findProduct("Бутерброд с курицей и соусом терияки").get(0)));
+        System.out.println("----------------------------------------------------------------------");
         System.out.println(machine);
 
 

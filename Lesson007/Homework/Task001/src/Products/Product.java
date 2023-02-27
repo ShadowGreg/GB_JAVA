@@ -3,30 +3,25 @@ package Products;
 public class Product {
 
     private final String name;
-
-    private final double cost;
-
-    private String loadDate;
+    private final int cost;
+    private final float volume;
 
     public Product() {
-        this("0", 0);
+        this("0", 0, 0f);
     }
 
-    public Product(String name, double cost) {
+    public Product(String name, int cost, float volume) {
         this.name = name;
         this.cost = cost;
+        this.volume = volume;
     }
 
-
-    public void setLoadDate(String loadDate) {
-        this.loadDate = loadDate;
-    }
 
     @Override
     public String toString() {
-        return String.format("Продукт -> '%s' цена %.2fр. Дата загрузки -> %s", name, cost, loadDate);
-    }
 
+        return String.format("Продукт %s по цене %dр. %.2f гр/л", name, cost, volume);
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -35,14 +30,18 @@ public class Product {
 
     @Override
     public int hashCode() {
-        return name.hashCode() + (int) cost;
+        return name.hashCode() +  cost;
     }
 
     public String getName() {
         return name;
     }
 
-    public double getCost() {
+    public int getCost() {
         return cost;
+    }
+
+    public float getVolume() {
+        return volume;
     }
 }

@@ -3,17 +3,14 @@ package Device;
 import Products.Product;
 
 import java.text.DateFormat;
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 
 public class VendingMachine {
     protected List<Product> localList = new ArrayList<>();
-    private double cash;
-    private final Locale locale = new Locale("ru","RU");
-    private final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.LONG, locale);
+    private int cash;
+
 
     @Override
     public String toString() {
@@ -22,13 +19,13 @@ public class VendingMachine {
             localString.append(product.toString());
             localString.append("\n");
         }
-        localString.append("В автомате -> ").append(cash).append("р. \n");
+        localString.append("В автомате имеется ").append(cash).append("р. \n");
         return localString.toString();
     }
 
     public void addProduct(Product inputProduct) {
         localList.add(inputProduct);
-        inputProduct.setLoadDate(dateFormat.format(new Date()));
+
     }
 
     public List<Product> findProduct(String name) {
@@ -55,8 +52,5 @@ public class VendingMachine {
         }
 
         return sellProduct;
-    }
-    public DateFormat getDateFormat(){
-        return dateFormat;
     }
 }
